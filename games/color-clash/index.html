@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Color Clash — Mental Game</title>
+    <meta
+      name="description"
+      content="Pick the ink color of the word, not what the word says."
+    />
+    <meta name="theme-color" content="#0a0c11" />
+    <link rel="stylesheet" href="../../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../../assets/css/base.css" />
+    <link rel="stylesheet" href="../../assets/css/components.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="../../assets/js/game-settings.js" defer></script>
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <main class="container game">
+      <div class="game__bar">
+        <a class="btn btn--ghost" href="../../">← All games</a>
+        <div data-game-settings></div>
+      </div>
+
+      <header class="game__header">
+        <p class="label">// Focus</p>
+        <h1>Color Clash</h1>
+        <p class="game__lead">
+          The word and the ink disagree. Choose the ink color, not what the word says. Faster correct picks score more.
+        </p>
+      </header>
+
+      <dl class="hud">
+        <div>
+          <dt class="label">Time</dt>
+          <dd id="time">1:00</dd>
+        </div>
+        <div>
+          <dt class="label">Score</dt>
+          <dd id="score">0</dd>
+        </div>
+        <div>
+          <dt class="label">Streak</dt>
+          <dd id="streak">0</dd>
+        </div>
+        <div>
+          <dt class="label">Best</dt>
+          <dd id="best">0</dd>
+        </div>
+      </dl>
+
+      <section class="game__stage card" id="stage">
+        <p class="status" id="status" role="status">Press Start. Match the ink, ignore the word.</p>
+        <p class="stimulus" id="stimulus" data-ink="cyan">RED</p>
+
+        <div class="choices" id="choices" role="group" aria-label="Ink color">
+          <button class="choice" type="button" data-color="red" disabled>
+            <span class="choice__swatch" aria-hidden="true"></span>
+            Red
+            <kbd class="kbd">R</kbd>
+          </button>
+          <button class="choice" type="button" data-color="yellow" disabled>
+            <span class="choice__swatch" aria-hidden="true"></span>
+            Yellow
+            <kbd class="kbd">Y</kbd>
+          </button>
+          <button class="choice" type="button" data-color="green" disabled>
+            <span class="choice__swatch" aria-hidden="true"></span>
+            Green
+            <kbd class="kbd">G</kbd>
+          </button>
+          <button class="choice" type="button" data-color="cyan" disabled>
+            <span class="choice__swatch" aria-hidden="true"></span>
+            Cyan
+            <kbd class="kbd">C</kbd>
+          </button>
+          <button class="choice" type="button" data-color="violet" disabled>
+            <span class="choice__swatch" aria-hidden="true"></span>
+            Violet
+            <kbd class="kbd">V</kbd>
+          </button>
+        </div>
+
+        <div class="game__actions">
+          <button class="btn btn--primary" type="button" id="start-btn">Start</button>
+        </div>
+
+        <div class="summary" id="summary" hidden>
+          <h2>Time's up</h2>
+          <p id="summary-text"></p>
+          <button class="btn btn--primary" type="button" id="again-btn">Play again</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

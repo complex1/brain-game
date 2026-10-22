@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Find the Word — Mental Game</title>
+    <meta
+      name="description"
+      content="Short nouns are hidden in a letter grid. Find every word by tracing it in a straight line."
+    />
+    <meta name="theme-color" content="#0a0c11" />
+    <link rel="stylesheet" href="../../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../../assets/css/base.css" />
+    <link rel="stylesheet" href="../../assets/css/components.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="../../assets/js/game-settings.js" defer></script>
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <main class="container game">
+      <div class="game__bar">
+        <a class="btn btn--ghost" href="../../">← All games</a>
+        <div data-game-settings></div>
+      </div>
+
+      <header class="game__header">
+        <p class="label">// Language</p>
+        <h1>Find the Word</h1>
+        <p class="game__lead">
+          Short nouns are hidden in the grid. Drag across a word, or tap its first and last letter.
+        </p>
+      </header>
+
+      <dl class="hud">
+        <div>
+          <dt class="label">Found</dt>
+          <dd id="found">0</dd>
+        </div>
+        <div>
+          <dt class="label">Time</dt>
+          <dd id="time">0:00</dd>
+        </div>
+        <div>
+          <dt class="label">Best</dt>
+          <dd id="best">—</dd>
+        </div>
+      </dl>
+
+      <section class="game__stage card" id="stage">
+        <p class="status" id="status" role="status">Press Start. Words load from the word list.</p>
+        <ul class="words" id="words" aria-label="Words to find"></ul>
+        <div class="grid" id="grid" role="grid" aria-label="Letter grid"></div>
+
+        <div class="game__actions">
+          <button class="btn btn--primary" type="button" id="start-btn">Start</button>
+        </div>
+
+        <div class="summary" id="summary" hidden>
+          <h2>All words found</h2>
+          <p id="summary-text"></p>
+          <button class="btn btn--primary" type="button" id="again-btn">Play again</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

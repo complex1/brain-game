@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quick Math — Mental Game</title>
+    <meta
+      name="description"
+      content="Solve as many arithmetic problems as you can before the timer runs out."
+    />
+    <meta name="theme-color" content="#0a0c11" />
+    <link rel="stylesheet" href="../../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../../assets/css/base.css" />
+    <link rel="stylesheet" href="../../assets/css/components.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="../../assets/js/game-settings.js" defer></script>
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <main class="container game">
+      <div class="game__bar">
+        <a class="btn btn--ghost" href="../../">← All games</a>
+        <div data-game-settings></div>
+      </div>
+
+      <header class="game__header">
+        <p class="label">// Arithmetic</p>
+        <h1>Quick Math</h1>
+        <p class="game__lead">
+          Solve as many problems as you can before the timer runs out. Faster correct answers score more. A miss breaks your streak.
+        </p>
+      </header>
+
+      <dl class="hud">
+        <div>
+          <dt class="label">Time</dt>
+          <dd id="time">1:00</dd>
+        </div>
+        <div>
+          <dt class="label">Score</dt>
+          <dd id="score">0</dd>
+        </div>
+        <div>
+          <dt class="label">Streak</dt>
+          <dd id="streak">0</dd>
+        </div>
+        <div>
+          <dt class="label">Best</dt>
+          <dd id="best">0</dd>
+        </div>
+      </dl>
+
+      <section class="game__stage card" id="stage">
+        <p class="status" id="status" role="status">Press Start. Type each answer and submit.</p>
+        <p class="problem" id="problem">+ − ×</p>
+
+        <form class="answer" id="answer-form" hidden>
+          <label class="visually-hidden" for="answer">Your answer</label>
+          <input
+            id="answer"
+            class="input"
+            type="text"
+            inputmode="numeric"
+            autocomplete="off"
+            autocapitalize="off"
+            spellcheck="false"
+            enterkeyhint="done"
+          />
+          <button class="btn btn--primary" type="submit" id="submit-btn">Submit</button>
+        </form>
+
+        <div class="game__actions">
+          <button class="btn btn--primary" type="button" id="start-btn">Start</button>
+        </div>
+
+        <div class="summary" id="summary" hidden>
+          <h2>Time's up</h2>
+          <p id="summary-text"></p>
+          <button class="btn btn--primary" type="button" id="again-btn">Play again</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

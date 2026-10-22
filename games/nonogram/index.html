@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nonogram — Mental Game</title>
+    <meta name="description" content="Fill cells so each row and column matches its run of blocks." />
+    <meta name="theme-color" content="#0a0c11" />
+    <link rel="stylesheet" href="../../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../../assets/css/base.css" />
+    <link rel="stylesheet" href="../../assets/css/components.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="../../assets/js/game-settings.js" defer></script>
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <main class="container game">
+      <div class="game__bar">
+        <a class="btn btn--ghost" href="../../">← All games</a>
+        <div data-game-settings></div>
+      </div>
+      <header class="game__header">
+        <p class="label">// Logic</p>
+        <h1>Nonogram</h1>
+        <p class="game__lead">
+          Fill the cells. The numbers beside each row and column are the lengths of the filled blocks, in order.
+        </p>
+      </header>
+      <dl class="hud">
+        <div><dt class="label">Rows</dt><dd id="rows-met">0</dd></div>
+        <div><dt class="label">Time</dt><dd id="time">0:00</dd></div>
+        <div><dt class="label">Best</dt><dd id="best">—</dd></div>
+      </dl>
+      <section class="game__stage card">
+        <p class="status" id="status" role="status">Press Start. Match every row and column.</p>
+        <div class="sheet" id="sheet">
+          <div class="sheet__corner"></div>
+          <div class="cols" id="cols"></div>
+          <div class="rows" id="row-clues"></div>
+          <div class="grid" id="grid" role="grid" aria-label="Nonogram"></div>
+        </div>
+        <div class="game__actions">
+          <button class="btn btn--primary" type="button" id="start-btn">Start</button>
+        </div>
+        <div class="summary" id="summary" hidden>
+          <h2>Picture complete</h2>
+          <p id="summary-text"></p>
+          <button class="btn btn--primary" type="button" id="again-btn">Play again</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

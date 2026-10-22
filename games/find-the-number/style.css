@@ -1,0 +1,222 @@
+.game__header {
+  margin-block: var(--space-6) var(--space-5);
+}
+
+.game__header h1 {
+  font-size: var(--text-2xl);
+  margin-top: var(--space-2);
+}
+
+.game__lead {
+  max-width: 62ch;
+  margin-top: var(--space-3);
+  color: var(--color-text-muted);
+}
+
+.hud {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.hud div {
+  text-align: center;
+}
+
+.hud dd {
+  margin-top: var(--space-1);
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  font-variant-numeric: tabular-nums;
+}
+
+.hud dd.is-low {
+  color: var(--color-danger);
+}
+
+.game__stage {
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.status {
+  min-height: 1.5em;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.04em;
+  color: var(--color-accent);
+}
+
+.status.is-ok {
+  color: var(--color-success);
+}
+
+.status.is-bad {
+  color: var(--color-danger);
+}
+
+.orbit {
+  --pace: 1;
+  container-type: size;
+  position: relative;
+  width: min(100%, 26rem);
+  aspect-ratio: 1;
+}
+
+.disk {
+  --ring: 46cqw;
+  --duration: calc(18s * var(--pace));
+  --direction: normal;
+  --counter: reverse;
+  position: absolute;
+  inset: calc(50% - var(--ring));
+  border: 2px solid var(--color-border-strong);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: spin var(--duration) linear infinite;
+  animation-direction: var(--direction);
+  animation-play-state: paused;
+}
+
+.disk--outer {
+  --ring: 46cqw;
+  --duration: calc(18s * var(--pace));
+  --direction: normal;
+  --counter: reverse;
+  border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-border-strong));
+}
+
+.disk--middle {
+  --ring: 32cqw;
+  --duration: calc(13s * var(--pace));
+  --direction: reverse;
+  --counter: normal;
+  border-color: color-mix(in srgb, var(--color-secondary) 60%, var(--color-border-strong));
+}
+
+.disk--inner {
+  --ring: 18cqw;
+  --duration: calc(9s * var(--pace));
+  --direction: normal;
+  --counter: reverse;
+  border-color: color-mix(in srgb, var(--color-success) 50%, var(--color-border-strong));
+}
+
+.orbit.is-live .disk,
+.orbit.is-live .upright {
+  animation-play-state: running;
+}
+
+.slot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  transform: rotate(var(--angle)) translateY(calc(var(--ring) * -1));
+}
+
+.upright {
+  width: 0;
+  height: 0;
+  animation: spin var(--duration) linear infinite;
+  animation-direction: var(--counter);
+  animation-play-state: paused;
+}
+
+.token {
+  width: min(2.6rem, var(--token, 2.6rem));
+  height: min(2.6rem, var(--token, 2.6rem));
+  padding: 0;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 50%;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: clamp(0.62rem, calc(var(--token, 2.6rem) * 0.36), var(--text-sm));
+  font-weight: var(--weight-bold);
+  font-variant-numeric: tabular-nums;
+  pointer-events: auto;
+  touch-action: manipulation;
+  transform: translate(-50%, -50%);
+}
+
+.token.is-found {
+  opacity: 0.35;
+  color: var(--color-text-subtle);
+  box-shadow: none;
+}
+
+.token.is-wrong {
+  color: var(--color-danger);
+  border-color: var(--color-danger);
+}
+
+.hub {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 20cqw;
+  aspect-ratio: 1;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 50%;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: clamp(1.4rem, 6cqw, 2rem);
+  font-weight: var(--weight-bold);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.game__actions {
+  display: flex;
+  justify-content: center;
+  min-height: 2.5rem;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.summary h2 {
+  font-size: var(--text-xl);
+}
+
+.summary p {
+  color: var(--color-text-muted);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 560px) {
+  .hud {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .game__stage {
+    padding: var(--space-4);
+  }
+}

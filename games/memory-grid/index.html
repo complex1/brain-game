@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Memory Grid — Mental Game</title>
+    <meta
+      name="description"
+      content="A pattern of tiles lights up for a moment. Select every tile that flashed."
+    />
+    <meta name="theme-color" content="#0a0c11" />
+    <link rel="stylesheet" href="../../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../../assets/css/base.css" />
+    <link rel="stylesheet" href="../../assets/css/components.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="../../assets/js/game-settings.js" defer></script>
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <main class="container game">
+      <div class="game__bar">
+        <a class="btn btn--ghost" href="../../">← All games</a>
+        <div data-game-settings></div>
+      </div>
+
+      <header class="game__header">
+        <p class="label">// Memory</p>
+        <h1>Memory Grid</h1>
+        <p class="game__lead">
+          A pattern of tiles lights up for a moment. Select every tile that flashed, then confirm.
+          The grid grows as you advance.
+        </p>
+      </header>
+
+      <dl class="hud">
+        <div>
+          <dt class="label">Round</dt>
+          <dd id="round">—</dd>
+        </div>
+        <div>
+          <dt class="label">Grid</dt>
+          <dd id="size">3×3</dd>
+        </div>
+        <div>
+          <dt class="label">Tiles</dt>
+          <dd id="tile-count">—</dd>
+        </div>
+        <div>
+          <dt class="label">Score</dt>
+          <dd id="score">0</dd>
+        </div>
+        <div>
+          <dt class="label">Best</dt>
+          <dd id="best">0</dd>
+        </div>
+      </dl>
+
+      <section class="game__stage card" id="stage">
+        <p class="status" id="status" role="status">Press Start. Remember the tiles that light up.</p>
+
+        <div class="grid" id="grid" role="group" aria-label="Memory grid"></div>
+
+        <p class="hint">Arrow keys move · Space selects</p>
+
+        <div class="game__actions">
+          <button class="btn btn--primary" type="button" id="start-btn">Start</button>
+          <button class="btn btn--primary" type="button" id="confirm-btn" hidden>Confirm</button>
+        </div>
+
+        <div class="summary" id="summary" hidden>
+          <h2>Round over</h2>
+          <p id="summary-text"></p>
+          <button class="btn btn--primary" type="button" id="again-btn">Play again</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

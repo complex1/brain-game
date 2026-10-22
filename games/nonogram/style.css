@@ -1,0 +1,90 @@
+.game__header { margin-block: var(--space-6) var(--space-5); }
+.game__header h1 { font-size: var(--text-2xl); margin-top: var(--space-2); }
+.game__lead { max-width: 62ch; margin-top: var(--space-3); color: var(--color-text-muted); }
+
+.hud {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+.hud div { text-align: center; }
+.hud dd {
+  margin-top: var(--space-1);
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  font-variant-numeric: tabular-nums;
+}
+
+.game__stage { align-items: center; gap: var(--space-4); text-align: center; }
+.status {
+  min-height: 1.5em;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.04em;
+  color: var(--color-accent);
+}
+.status.is-ok { color: var(--color-success); }
+.status.is-bad { color: var(--color-danger); }
+
+.sheet {
+  --n: 8;
+  --cell: min(2rem, calc((100vw - 8rem) / var(--n)));
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: var(--space-2);
+  align-items: end;
+  width: min(100%, 32rem);
+  user-select: none;
+}
+
+.cols, .grid { display: grid; grid-template-columns: repeat(var(--n), var(--cell)); gap: 3px; }
+.rows { display: grid; gap: 3px; justify-items: end; }
+
+.clue-col, .clue-row {
+  display: flex;
+  gap: 0.15rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  line-height: 1;
+}
+.clue-col { flex-direction: column; align-items: center; justify-content: end; min-height: 100%; }
+.clue-row { justify-content: end; align-items: center; min-height: var(--cell); }
+.clue-col.is-met, .clue-row.is-met { color: var(--color-success); }
+.clue-col.is-bad, .clue-row.is-bad { color: var(--color-danger); }
+.clue-col.is-bad, .clue-row.is-bad { color: var(--color-danger); }
+
+.cell {
+  width: var(--cell);
+  height: var(--cell);
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: var(--color-surface-raised);
+  color: var(--color-text-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  touch-action: manipulation;
+}
+.cell.is-on { background: var(--color-accent); color: transparent; }
+.cell.is-mark { color: var(--color-danger); }
+
+.game__actions { display: flex; justify-content: center; min-height: 2.5rem; }
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+.summary h2 { font-size: var(--text-xl); }
+.summary p { color: var(--color-text-muted); }

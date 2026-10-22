@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Game Name — Mental Game</title>
+    <meta name="theme-color" content="#0a0c11" />
+    <link rel="stylesheet" href="../../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../../assets/css/base.css" />
+    <link rel="stylesheet" href="../../assets/css/components.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="../../assets/js/game-settings.js" defer></script>
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <main class="container game">
+      <div class="game__bar">
+        <a class="btn btn--ghost" href="../../">← All games</a>
+        <div data-game-settings></div>
+      </div>
+
+      <header class="game__header">
+        <p class="label">// Memory</p>
+        <h1>Game Name</h1>
+      </header>
+
+      <section class="game__stage card" id="stage">
+        <p class="card__body">Game area goes here.</p>
+        <button class="btn btn--primary" type="button" id="start-btn">Start</button>
+      </section>
+    </main>
+  </body>
+</html>

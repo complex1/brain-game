@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mental Game — Brain Training Catalog</title>
+    <meta name="description" content="A catalog of small browser games for memory, focus, logic and speed." />
+    <meta name="theme-color" content="#0a0c11" />
+    <link rel="stylesheet" href="assets/css/tokens.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/home.css" />
+    <script src="assets/js/catalog.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="brand" href="./">
+          <span class="brand__mark" aria-hidden="true">MG</span>
+          Mental Game
+        </a>
+        <span class="label">Brain Training</span>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <p class="label">// Catalog</p>
+        <h1 class="hero__title">Train your mind, <span>one game</span> at a time.</h1>
+        <p class="hero__lead">
+          Short, focused games for memory, attention, logic and speed. Pick one and play — no sign-up needed.
+        </p>
+      </section>
+
+      <section aria-labelledby="catalog-heading">
+        <h2 id="catalog-heading" class="visually-hidden">Games</h2>
+
+        <div class="toolbar">
+          <div class="search">
+            <label for="search-input" class="visually-hidden">Search games</label>
+            <input
+              id="search-input"
+              class="input"
+              type="search"
+              placeholder="Search by name, skill or tag…"
+              autocomplete="off"
+            />
+            <span class="kbd" aria-hidden="true">/</span>
+          </div>
+          <div class="filters" id="tag-filters" role="group" aria-label="Filter by category"></div>
+        </div>
+
+        <p class="results-meta label" id="results-meta" aria-live="polite"></p>
+
+        <ul class="game-grid" id="game-grid"></ul>
+
+        <div class="empty-state" id="empty-state" hidden>
+          <h2>No games found</h2>
+          <p>Try a different search term or clear the filters.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">Mental Game · Built with plain HTML, CSS and JavaScript.</div>
+    </footer>
+  </body>
+</html>

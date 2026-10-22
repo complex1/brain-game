@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nurikabe — Mental Game</title>
+    <meta name="description" content="Shade a connected sea around numbered islands, with no 2×2 pool." />
+    <meta name="theme-color" content="#0a0c11" />
+    <link rel="stylesheet" href="../../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../../assets/css/base.css" />
+    <link rel="stylesheet" href="../../assets/css/components.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="../../assets/js/game-settings.js" defer></script>
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <main class="container game">
+      <div class="game__bar">
+        <a class="btn btn--ghost" href="../../">← All games</a>
+        <div data-game-settings></div>
+      </div>
+      <header class="game__header">
+        <p class="label">// Logic</p>
+        <h1>Nurikabe</h1>
+        <p class="game__lead">
+          Shade the sea. Each number is an island of that many unshaded cells, islands do not touch, the sea is one piece, and the sea has no 2×2 pool.
+        </p>
+      </header>
+      <dl class="hud">
+        <div><dt class="label">Shaded</dt><dd id="shaded">0</dd></div>
+        <div><dt class="label">Time</dt><dd id="time">0:00</dd></div>
+        <div><dt class="label">Best</dt><dd id="best">—</dd></div>
+      </dl>
+      <section class="game__stage card">
+        <p class="status" id="status" role="status">Press Start. Shade the sea around the islands.</p>
+        <div class="grid" id="grid" role="grid" aria-label="Nurikabe"></div>
+        <div class="game__actions">
+          <button class="btn btn--primary" type="button" id="start-btn">Start</button>
+        </div>
+        <div class="summary" id="summary" hidden>
+          <h2>Sea complete</h2>
+          <p id="summary-text"></p>
+          <button class="btn btn--primary" type="button" id="again-btn">Play again</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
