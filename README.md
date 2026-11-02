@@ -10,12 +10,13 @@ installation, build command, backend, account system, or tracking.
 
 ## Included games
 
-- Memory Grid, Sequence Recall
-- Quick Math, Quick Sum
-- Color Clash
+- Memory Grid, Sequence Recall, Concentration, Reverse Digits
+- Quick Math, Quick Sum, Missing Operator
+- Color Clash, Odd One Out, Reaction Tap
+- Find the Number, Find the Word, Anagram Sprint, Word Ladder
+- Mirror Match
 - Sudoku, Queens, Zip
-- Find the Number, Find the Word
-- Slitherlink, Nonogram, Kakuro, Hashi, Nurikabe
+- Slitherlink, Nonogram, Kakuro, Hashi, Nurikabe, Guess the Pattern
 
 Settings and personal-best times are saved in the browser with `localStorage`.
 Find the Word retrieves short nouns from

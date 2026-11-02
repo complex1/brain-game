@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Guess the Pattern — Mental Game</title>
+    <meta
+      name="description"
+      content="Arrange the color blocks, then check. You only learn how many are in the right place."
+    />
+    <meta name="theme-color" content="#0a0c11" />
+    <link rel="stylesheet" href="../../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../../assets/css/base.css" />
+    <link rel="stylesheet" href="../../assets/css/components.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="../../assets/js/game-settings.js" defer></script>
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <main class="container game">
+      <div class="game__bar">
+        <a class="btn btn--ghost" href="../../">← All games</a>
+        <div data-game-settings></div>
+      </div>
+
+      <header class="game__header">
+        <p class="label">// Logic</p>
+        <h1>Guess the Pattern</h1>
+        <p class="game__lead">
+          A hidden order uses each color once. Drag the blocks into the row, then check. You only learn how many are in the right place, not which ones.
+        </p>
+      </header>
+
+      <dl class="hud">
+        <div>
+          <dt class="label">Checks</dt>
+          <dd id="checks">0</dd>
+        </div>
+        <div>
+          <dt class="label">Time</dt>
+          <dd id="time">0:00</dd>
+        </div>
+        <div>
+          <dt class="label">Best</dt>
+          <dd id="best">—</dd>
+        </div>
+      </dl>
+
+      <section class="game__stage card" id="stage">
+        <p class="status" id="status" role="status">Drag the colors into the row. Next pattern: 5 colors.</p>
+
+        <div class="summary" id="summary" hidden>
+          <h2>Pattern found</h2>
+          <p id="summary-text"></p>
+          <button class="btn btn--primary" type="button" id="again-btn">Play again</button>
+        </div>
+
+        <div class="board" id="board">
+          <div class="table" id="table" role="list" aria-label="Pattern"></div>
+          <p class="label" id="tray-label">Colors</p>
+          <div class="tray" id="tray" aria-label="Available colors"></div>
+        </div>
+
+        <div class="game__actions">
+          <button class="btn btn--primary" type="button" id="check-btn" disabled>Check</button>
+          <button class="btn btn--ghost" type="button" id="start-btn">Start</button>
+        </div>
+
+        <p class="result" id="result" role="status" hidden></p>
+      </section>
+    </main>
+    <div class="chip chip--ghost" id="ghost" hidden></div>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mirror Match — Mental Game</title>
+    <meta name="description" content="Pick the shape that matches the target after a turn or a flip." />
+    <meta name="theme-color" content="#0a0c11" />
+    <link rel="stylesheet" href="../../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../../assets/css/base.css" />
+    <link rel="stylesheet" href="../../assets/css/components.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="../../assets/js/game-settings.js" defer></script>
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <main class="container game">
+      <div class="game__bar">
+        <a class="btn btn--ghost" href="../../">← All games</a>
+        <div data-game-settings></div>
+      </div>
+      <header class="game__header">
+        <p class="label">// Spatial</p>
+        <h1>Mirror Match</h1>
+        <p class="game__lead">Look at the target shape, then pick the copy that has been turned. Flips mode uses a mirror image instead.</p>
+      </header>
+      <dl class="hud">
+        <div><dt class="label">Time</dt><dd id="time">1:00</dd></div>
+        <div><dt class="label">Score</dt><dd id="score">0</dd></div>
+        <div><dt class="label">Streak</dt><dd id="streak">0</dd></div>
+        <div><dt class="label">Best</dt><dd id="best">0</dd></div>
+      </dl>
+      <section class="game__stage card">
+        <p class="status" id="status" role="status">Press Start. Next round: turns, 60s.</p>
+        <div class="target" id="target" aria-label="Target shape"></div>
+        <div class="choices" id="choices" role="group" aria-label="Choices"></div>
+        <div class="game__actions">
+          <button class="btn btn--primary" type="button" id="start-btn">Start</button>
+        </div>
+        <div class="summary" id="summary" hidden>
+          <h2>Time's up</h2>
+          <p id="summary-text"></p>
+          <button class="btn btn--primary" type="button" id="again-btn">Play again</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

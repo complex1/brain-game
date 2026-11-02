@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reaction Tap — Mental Game</title>
+    <meta name="description" content="Wait for the signal, then tap as fast as you can." />
+    <meta name="theme-color" content="#0a0c11" />
+    <link rel="stylesheet" href="../../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../../assets/css/base.css" />
+    <link rel="stylesheet" href="../../assets/css/components.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="../../assets/js/game-settings.js" defer></script>
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <main class="container game">
+      <div class="game__bar">
+        <a class="btn btn--ghost" href="../../">← All games</a>
+        <div data-game-settings></div>
+      </div>
+      <header class="game__header">
+        <p class="label">// Focus</p>
+        <h1>Reaction Tap</h1>
+        <p class="game__lead">Wait until the pad turns green, then tap. An early tap does not count and the wait starts again.</p>
+      </header>
+      <dl class="hud">
+        <div><dt class="label">Round</dt><dd id="round">0/5</dd></div>
+        <div><dt class="label">Last</dt><dd id="last">—</dd></div>
+        <div><dt class="label">Average</dt><dd id="average">—</dd></div>
+        <div><dt class="label">Best</dt><dd id="best">—</dd></div>
+      </dl>
+      <section class="game__stage card">
+        <p class="status" id="status" role="status">Press Start. Next run: 5 taps.</p>
+        <button class="pad" type="button" id="pad" disabled>Wait</button>
+        <div class="game__actions">
+          <button class="btn btn--primary" type="button" id="start-btn">Start</button>
+        </div>
+        <div class="summary" id="summary" hidden>
+          <h2>Run complete</h2>
+          <p id="summary-text"></p>
+          <button class="btn btn--primary" type="button" id="again-btn">Play again</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

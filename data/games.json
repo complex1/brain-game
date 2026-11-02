@@ -180,6 +180,114 @@
       "path": "games/nurikabe/",
       "status": "live",
       "addedOn": "2026-10-22"
+    },
+    {
+      "id": "guess-the-pattern",
+      "name": "Guess the Pattern",
+      "tag": "Logic",
+      "description": "Arrange the color blocks, then check. You only learn how many are in the right place.",
+      "tags": ["logic", "pattern", "colors", "deduction"],
+      "difficulty": "medium",
+      "durationMinutes": 4,
+      "path": "games/guess-the-pattern/",
+      "status": "live",
+      "addedOn": "2026-11-02"
+    },
+    {
+      "id": "odd-one-out",
+      "name": "Odd One Out",
+      "tag": "Focus",
+      "description": "Tap the one shape or color that does not match the rest of the grid.",
+      "tags": ["focus", "attention", "visual", "shapes"],
+      "difficulty": "easy",
+      "durationMinutes": 1,
+      "path": "games/odd-one-out/",
+      "status": "live",
+      "addedOn": "2026-11-02"
+    },
+    {
+      "id": "anagram-sprint",
+      "name": "Anagram Sprint",
+      "tag": "Language",
+      "description": "Tap scrambled letters into short words before the clock runs out.",
+      "tags": ["language", "words", "anagram", "speed"],
+      "difficulty": "easy",
+      "durationMinutes": 1,
+      "path": "games/anagram-sprint/",
+      "status": "live",
+      "addedOn": "2026-11-02"
+    },
+    {
+      "id": "concentration",
+      "name": "Concentration",
+      "tag": "Memory",
+      "description": "Flip cards two at a time and find every matching pair.",
+      "tags": ["memory", "pairs", "cards", "visual"],
+      "difficulty": "easy",
+      "durationMinutes": 3,
+      "path": "games/concentration/",
+      "status": "live",
+      "addedOn": "2026-11-02"
+    },
+    {
+      "id": "reaction-tap",
+      "name": "Reaction Tap",
+      "tag": "Focus",
+      "description": "Wait for the pad to turn green, then tap. Early taps do not count.",
+      "tags": ["focus", "reaction", "speed", "attention"],
+      "difficulty": "easy",
+      "durationMinutes": 1,
+      "path": "games/reaction-tap/",
+      "status": "live",
+      "addedOn": "2026-11-02"
+    },
+    {
+      "id": "reverse-digits",
+      "name": "Reverse Digits",
+      "tag": "Memory",
+      "description": "A number flashes. Enter those digits in reverse as the length grows.",
+      "tags": ["memory", "numbers", "digits", "working memory"],
+      "difficulty": "medium",
+      "durationMinutes": 3,
+      "path": "games/reverse-digits/",
+      "status": "live",
+      "addedOn": "2026-11-02"
+    },
+    {
+      "id": "missing-operator",
+      "name": "Missing Operator",
+      "tag": "Arithmetic",
+      "description": "Pick the one operation that makes the equation true.",
+      "tags": ["math", "arithmetic", "operations", "numbers"],
+      "difficulty": "medium",
+      "durationMinutes": 1,
+      "path": "games/missing-operator/",
+      "status": "live",
+      "addedOn": "2026-11-02"
+    },
+    {
+      "id": "word-ladder",
+      "name": "Word Ladder",
+      "tag": "Language",
+      "description": "Change one letter at a time until the start word becomes the goal.",
+      "tags": ["language", "words", "ladder", "spelling"],
+      "difficulty": "medium",
+      "durationMinutes": 4,
+      "path": "games/word-ladder/",
+      "status": "live",
+      "addedOn": "2026-11-02"
+    },
+    {
+      "id": "mirror-match",
+      "name": "Mirror Match",
+      "tag": "Spatial",
+      "description": "Pick the copy of a shape that has been turned, or flipped in mirror mode.",
+      "tags": ["spatial", "shapes", "rotation", "visual"],
+      "difficulty": "medium",
+      "durationMinutes": 2,
+      "path": "games/mirror-match/",
+      "status": "live",
+      "addedOn": "2026-11-02"
     }
   ]
 }
