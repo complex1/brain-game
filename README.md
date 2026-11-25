@@ -54,6 +54,22 @@ For the first deployment:
 Future pushes to `main` deploy automatically. The `.nojekyll` file tells
 GitHub Pages to serve all project files directly.
 
+## Install as an app (PWA)
+
+The site is an installable, offline-capable web app. Open it over HTTPS (the
+GitHub Pages URL) and use **Install** in the browser's address bar (Chrome,
+Edge), or **Share → Add to Home Screen** on iPhone and **⋮ → Install app** on
+Android.
+
+- `manifest.webmanifest` describes the app; icons live in `assets/icons/`
+  (regenerate with `node scripts/generate-icons.js`).
+- `sw.js` caches the catalog and every game listed in `data/games.json`, so new
+  games are picked up automatically. Pages load from the network first and fall
+  back to the cache when offline. Bump `CACHE_VERSION` in `sw.js` to force a
+  full refresh.
+- Every new game page needs the manifest/icon tags and `pwa.js` script from
+  `games/_template/index.html`.
+
 ## Project structure
 
 ```text
