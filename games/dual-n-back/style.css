@@ -1,0 +1,66 @@
+.game__header { margin-block: var(--space-6) var(--space-5); }
+.game__header h1 { font-size: var(--text-2xl); margin-top: var(--space-2); }
+.game__lead { max-width: 62ch; margin-top: var(--space-3); color: var(--color-text-muted); }
+.hud {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-3);
+  margin-bottom: var(--space-5); padding: var(--space-4); background: var(--color-surface);
+  border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+}
+.hud div { text-align: center; }
+.hud dd { margin-top: var(--space-1); font-family: var(--font-mono); font-size: var(--text-xl); font-weight: var(--weight-semibold); font-variant-numeric: tabular-nums; }
+.game__stage { align-items: center; gap: var(--space-4); text-align: center; }
+.status { min-height: 1.5em; font-family: var(--font-mono); font-size: var(--text-sm); letter-spacing: 0.04em; color: var(--color-accent); }
+.status.is-ok { color: var(--color-success); }
+.status.is-bad { color: var(--color-danger); }
+
+.stimulus {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-2);
+  width: min(100%, 18rem);
+}
+.cell {
+  display: grid; place-items: center; aspect-ratio: 1; min-width: 0;
+  background: var(--color-surface-raised); border: 1px solid var(--color-border); border-radius: var(--radius-md);
+  transition: background-color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+}
+.cell.is-lit {
+  background: color-mix(in srgb, var(--color-accent) 70%, var(--color-surface-raised));
+  border-color: var(--color-accent); box-shadow: var(--shadow-glow);
+}
+.cell--center { background: var(--color-surface); border-style: dashed; }
+.letter {
+  font-family: var(--font-mono); font-size: clamp(1.8rem, 9vw, 2.6rem); font-weight: var(--weight-bold);
+  line-height: 1; color: var(--color-secondary);
+}
+
+.answers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); width: min(100%, 26rem); }
+.answer {
+  min-height: 4rem; padding-inline: var(--space-2); font-size: var(--text-md); touch-action: manipulation;
+  transition: background-color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+}
+.answer:focus-visible { box-shadow: var(--focus-ring); }
+.answer.is-pressed { border-color: var(--color-accent); background: var(--color-accent-soft); color: var(--color-accent); }
+.answer.is-correct {
+  border-color: var(--color-success); color: var(--color-success);
+  background: color-mix(in srgb, var(--color-success) 18%, var(--color-surface-raised));
+}
+.answer.is-wrong {
+  border-color: var(--color-danger); color: var(--color-danger);
+  background: color-mix(in srgb, var(--color-danger) 18%, var(--color-surface-raised));
+}
+
+.game__actions { display: flex; justify-content: center; min-height: 2.5rem; }
+.summary {
+  display: flex; flex-direction: column; align-items: center; gap: var(--space-3); width: 100%;
+  padding-top: var(--space-4); border-top: 1px solid var(--color-border);
+}
+.summary h2 { font-size: var(--text-xl); }
+.summary p { max-width: 42ch; color: var(--color-text-muted); }
+.results { width: min(100%, 26rem); border-collapse: collapse; font-size: var(--text-sm); }
+.results caption { margin-bottom: var(--space-2); caption-side: top; }
+.results th, .results td { padding: var(--space-2); border-bottom: 1px solid var(--color-border); }
+.results thead th { font-family: var(--font-mono); font-size: var(--text-xs); font-weight: var(--weight-medium); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--color-text-muted); }
+.results tbody th { text-align: left; font-weight: var(--weight-medium); color: var(--color-text-muted); }
+.results td, .results thead th:not(:first-child) { text-align: right; }
+.results td { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+@media (max-width: 560px) { .game__stage { padding: var(--space-4); } }
+@media (prefers-reduced-motion: reduce) { .cell, .answer { transition: none; } }

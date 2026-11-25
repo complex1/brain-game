@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dual N-Back — Mental Game</title>
+    <meta name="description" content="Track a lit square and a letter. Spot when either one repeats from N rounds ago." />
+    <meta name="theme-color" content="#0a0c11" />
+    <link rel="stylesheet" href="../../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../../assets/css/base.css" />
+    <link rel="stylesheet" href="../../assets/css/components.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="../../assets/js/game-settings.js" defer></script>
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <main class="container game">
+      <div class="game__bar">
+        <a class="btn btn--ghost" href="../../">← All games</a>
+        <div data-game-settings></div>
+      </div>
+      <header class="game__header">
+        <p class="label">// Focus</p>
+        <h1>Dual N-Back</h1>
+        <p class="game__lead">Each round a square lights up and a letter appears. Press Position if the square is where it was N rounds ago, and Letter if the letter matches N rounds ago. Both can match in the same round.</p>
+      </header>
+      <dl class="hud">
+        <div><dt class="label">Trial</dt><dd id="trial">0 / 22</dd></div>
+        <div><dt class="label">Accuracy</dt><dd id="accuracy">—</dd></div>
+        <div><dt class="label">Best</dt><dd id="best">—</dd></div>
+      </dl>
+      <section class="game__stage card">
+        <p class="status" id="status" role="status">Press Start.</p>
+        <div class="stimulus" id="stimulus" role="img" aria-label="No stimulus"></div>
+        <div class="answers">
+          <button class="btn btn--ghost answer" type="button" id="pos-btn" aria-keyshortcuts="A" disabled>Position (A)</button>
+          <button class="btn btn--ghost answer" type="button" id="letter-btn" aria-keyshortcuts="L" disabled>Letter (L)</button>
+        </div>
+        <div class="game__actions">
+          <button class="btn btn--primary" type="button" id="start-btn">Start</button>
+        </div>
+        <div class="summary" id="summary" hidden>
+          <h2>Session complete</h2>
+          <p id="summary-text"></p>
+          <table class="results" id="results">
+            <caption class="label">Scored trials only</caption>
+            <thead>
+              <tr><th scope="col"></th><th scope="col">Position</th><th scope="col">Letter</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <button class="btn btn--primary" type="button" id="again-btn">Play again</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

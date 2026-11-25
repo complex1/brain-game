@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chess — Mental Game</title>
+    <meta
+      name="description"
+      content="Play a full game of chess against the computer. Three levels, every rule, no sign-up."
+    />
+    <meta name="theme-color" content="#0a0c11" />
+    <link rel="stylesheet" href="../../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../../assets/css/base.css" />
+    <link rel="stylesheet" href="../../assets/css/components.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="../../assets/js/game-settings.js" defer></script>
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <main class="container game">
+      <div class="game__bar">
+        <a class="btn btn--ghost" href="../../">← All games</a>
+        <div data-game-settings></div>
+      </div>
+
+      <header class="game__header">
+        <p class="label">// Strategy</p>
+        <h1>Chess</h1>
+        <p class="game__lead">
+          Play the computer. Tap a piece, then tap where it should go. Castling, en passant and promotion all work.
+        </p>
+      </header>
+
+      <dl class="hud">
+        <div>
+          <dt class="label">Your moves</dt>
+          <dd id="moves">0</dd>
+        </div>
+        <div>
+          <dt class="label">Time</dt>
+          <dd id="time">0:00</dd>
+        </div>
+        <div>
+          <dt class="label">Best win</dt>
+          <dd id="best">—</dd>
+        </div>
+      </dl>
+
+      <section class="game__stage card" id="stage">
+        <p class="status" id="status" role="status">Press Start.</p>
+
+        <div class="summary" id="summary" hidden>
+          <h2 id="summary-title">Game over</h2>
+          <p id="summary-text"></p>
+          <button class="btn btn--primary" type="button" id="again-btn">Play again</button>
+        </div>
+
+        <div class="board is-idle" id="board" aria-label="Chess board"></div>
+        <div class="promo" id="promo" role="group" aria-label="Promote pawn to" hidden></div>
+
+        <div class="game__actions">
+          <button class="btn btn--primary" type="button" id="start-btn">Start</button>
+          <button class="btn btn--ghost" type="button" id="undo-btn" hidden>Undo</button>
+          <button class="btn btn--ghost" type="button" id="resign-btn" hidden>Resign</button>
+        </div>
+
+        <div class="moves" hidden>
+          <p class="label">Moves</p>
+          <ol class="movelist" id="movelist"></ol>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

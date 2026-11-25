@@ -1,0 +1,203 @@
+.game__header {
+  margin-block: var(--space-6) var(--space-5);
+}
+
+.game__header h1 {
+  font-size: var(--text-2xl);
+  margin-top: var(--space-2);
+}
+
+.game__lead {
+  max-width: 62ch;
+  margin-top: var(--space-3);
+  color: var(--color-text-muted);
+}
+
+.hud {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.hud div {
+  min-width: 0;
+  text-align: center;
+}
+
+.hud dd {
+  margin-top: var(--space-1);
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  font-variant-numeric: tabular-nums;
+}
+
+.game__stage {
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.status {
+  min-height: 1.5em;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.04em;
+  color: var(--color-accent);
+}
+
+.status.is-ok { color: var(--color-success); }
+.status.is-bad { color: var(--color-danger); }
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.summary h2 { font-size: var(--text-xl); }
+
+.summary p {
+  max-width: 42ch;
+  color: var(--color-text-muted);
+}
+
+/* Board */
+
+.board {
+  --light: color-mix(in srgb, var(--color-text) 14%, var(--color-surface-raised));
+  --dark: var(--color-surface);
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+  width: min(100%, 34rem);
+  aspect-ratio: 1;
+  container-type: inline-size;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  touch-action: manipulation;
+}
+
+.board.is-idle { opacity: 0.7; }
+
+.sq {
+  --sq-bg: var(--light);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: var(--sq-bg);
+  color: inherit;
+}
+
+.sq--dark {
+  --sq-bg: var(--dark);
+  cursor: pointer;
+}
+
+.sq.is-last {
+  background: color-mix(in srgb, var(--color-warning) 22%, var(--sq-bg));
+}
+
+.sq.is-selected {
+  background: color-mix(in srgb, var(--color-text) 18%, var(--sq-bg));
+  box-shadow: inset 0 0 0 3px var(--color-text);
+}
+
+.sq:focus-visible {
+  outline: 0;
+  box-shadow: inset 0 0 0 3px var(--color-warning);
+  z-index: 1;
+}
+
+.sq.is-target::after {
+  content: "";
+  position: absolute;
+  width: 28%;
+  height: 28%;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-text) 70%, transparent);
+  pointer-events: none;
+}
+
+.piece {
+  --piece: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 74%;
+  height: 74%;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--piece) 50%, var(--color-bg));
+  background: var(--piece);
+  box-shadow:
+    inset 0 0 0 0.35rem color-mix(in srgb, var(--piece) 72%, var(--color-bg)),
+    var(--shadow-sm);
+  pointer-events: none;
+  user-select: none;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+.piece--first { --piece: var(--color-accent); }
+.piece--second { --piece: var(--color-secondary); }
+
+.piece__crown {
+  font-family: "Apple Symbols", "Segoe UI Symbol", "Noto Sans Symbols 2", "DejaVu Sans", serif;
+  font-size: 5.6cqw;
+  line-height: 1;
+  color: var(--color-text-on-accent);
+}
+
+.sq.is-movable .piece {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+
+.piece.is-captured { opacity: 0.28; }
+
+.coord {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  line-height: 1;
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.coord--rank { top: 3px; left: 4px; }
+.coord--file { bottom: 3px; right: 4px; }
+
+.game__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  min-height: 2.5rem;
+}
+
+@media (max-width: 560px) {
+  .game__stage { padding: var(--space-3); }
+  .hud {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: var(--space-2);
+    padding: var(--space-3);
+  }
+  .hud div { grid-column: span 2; }
+  .hud div:nth-child(n + 4) { grid-column: span 3; }
+  .hud dd { font-size: var(--text-lg); }
+  .coord { font-size: 0.55rem; }
+}

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mastermind — Mental Game</title>
+    <meta
+      name="description"
+      content="Crack the hidden color code. Each guess tells you how many pegs are right and in place, and how many are right but misplaced."
+    />
+    <meta name="theme-color" content="#0a0c11" />
+    <link rel="stylesheet" href="../../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../../assets/css/base.css" />
+    <link rel="stylesheet" href="../../assets/css/components.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="../../assets/js/game-settings.js" defer></script>
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <main class="container game">
+      <div class="game__bar">
+        <a class="btn btn--ghost" href="../../">← All games</a>
+        <div data-game-settings></div>
+      </div>
+
+      <header class="game__header">
+        <p class="label">// Logic</p>
+        <h1>Mastermind</h1>
+        <p class="game__lead">
+          The computer hides a code of colored pegs. Build a guess and submit it. You learn how many pegs have the right color in the right place, and how many have the right color in the wrong place. Crack the code before you run out of attempts.
+        </p>
+      </header>
+
+      <dl class="hud">
+        <div>
+          <dt class="label">Attempt</dt>
+          <dd id="attempt">0 / 10</dd>
+        </div>
+        <div>
+          <dt class="label">Time</dt>
+          <dd id="time">0:00</dd>
+        </div>
+        <div>
+          <dt class="label">Best</dt>
+          <dd id="best">—</dd>
+        </div>
+      </dl>
+
+      <section class="game__stage card" id="stage">
+        <p class="status" id="status" role="status">Press Start to hide a new code.</p>
+
+        <div class="summary" id="summary" hidden>
+          <h2 id="summary-title">Code cracked</h2>
+          <p id="summary-text"></p>
+          <p class="label">The code</p>
+          <div class="code" id="code" role="img" aria-label="The hidden code"></div>
+          <button class="btn btn--primary" type="button" id="again-btn">Play again</button>
+        </div>
+
+        <div class="board" id="board">
+          <p class="label">Your guess</p>
+          <div class="guess" id="guess" role="group" aria-label="Current guess"></div>
+          <p class="label">Colors</p>
+          <div class="palette" id="palette" role="group" aria-label="Colors"></div>
+
+          <div class="game__actions">
+            <button class="btn btn--primary" type="button" id="submit-btn" disabled>Submit guess</button>
+            <button class="btn btn--ghost" type="button" id="clear-btn" disabled>Clear row</button>
+            <button class="btn btn--ghost" type="button" id="start-btn">Start</button>
+          </div>
+
+          <p class="label" id="history-label">Previous guesses</p>
+          <ol class="history" id="history" aria-labelledby="history-label"></ol>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

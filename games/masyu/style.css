@@ -1,0 +1,149 @@
+.game__header { margin-block: var(--space-6) var(--space-5); }
+.game__header h1 { font-size: var(--text-2xl); margin-top: var(--space-2); }
+.game__lead { max-width: 62ch; margin-top: var(--space-3); color: var(--color-text-muted); }
+
+.hud {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+.hud div { text-align: center; }
+.hud dd {
+  margin-top: var(--space-1);
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  font-variant-numeric: tabular-nums;
+}
+
+.game__stage { align-items: center; gap: var(--space-4); text-align: center; }
+.status {
+  min-height: 1.5em;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.04em;
+  color: var(--color-accent);
+}
+.status.is-ok { color: var(--color-success); }
+.status.is-bad { color: var(--color-danger); }
+
+.board {
+  --n: 6;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+  grid-template-rows: repeat(var(--n), minmax(0, 1fr));
+  width: min(100%, calc(var(--n) * 3.25rem));
+  aspect-ratio: 1;
+  container-type: inline-size;
+  --grid-line: color-mix(in srgb, var(--color-border) 60%, transparent);
+  background-color: var(--color-bg);
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: calc(100% / var(--n)) calc(100% / var(--n));
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+.board:empty { display: none; }
+
+.board > * {
+  --cell: calc(100cqw / var(--n));
+  --line: max(3px, calc(var(--cell) * 0.14));
+}
+
+.node {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.node::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-text-subtle);
+}
+
+.node.is-white::before,
+.node.is-black::before {
+  width: 56%;
+  height: 56%;
+  box-sizing: border-box;
+  border: max(2px, calc(var(--cell) * 0.07)) solid var(--color-text);
+}
+.node.is-white::before { background: transparent; }
+.node.is-black::before { background: var(--color-text); }
+
+.node.is-bad::before { border-color: var(--color-danger); }
+.node.is-black.is-bad::before { background: var(--color-danger); }
+.node.is-branch:not(.is-white):not(.is-black)::before {
+  width: 10px;
+  height: 10px;
+  background: var(--color-danger);
+}
+
+.edge {
+  position: absolute;
+  z-index: 1;
+  width: calc(var(--cell) * 0.5);
+  height: calc(var(--cell) * 0.5);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  transform: translate(-50%, -50%);
+  touch-action: none;
+}
+.edge--h { height: calc(var(--cell) * 0.7); }
+.edge--v { width: calc(var(--cell) * 0.7); }
+
+.edge::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  transform: translate(-50%, -50%);
+  transition: background-color var(--duration-fast) var(--ease-out);
+  pointer-events: none;
+}
+.edge--h::after { width: calc(var(--cell) + var(--line)); height: var(--line); }
+.edge--v::after { width: var(--line); height: calc(var(--cell) + var(--line)); }
+
+@media (hover: hover) {
+  .edge:hover::after { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
+}
+.edge.is-on::after { background: var(--color-accent); }
+.edge:focus-visible { box-shadow: inset 0 0 0 2px var(--color-accent); }
+.edge:focus-visible:not(.is-on)::after { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
+
+.board.is-solved .edge.is-on::after { background: var(--color-success); }
+.board.is-solved .node.is-white::before,
+.board.is-solved .node.is-black::before { border-color: var(--color-success); }
+.board.is-solved .node.is-black::before { background: var(--color-success); }
+
+.game__actions { display: flex; justify-content: center; gap: var(--space-3); min-height: 2.5rem; }
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+.summary h2 { font-size: var(--text-xl); }
+.summary p { color: var(--color-text-muted); }

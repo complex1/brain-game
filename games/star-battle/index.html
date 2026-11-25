@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Star Battle — Mental Game</title>
+    <meta name="description" content="Place stars so every row, column and region holds the same number, and no two stars touch." />
+    <meta name="theme-color" content="#0a0c11" />
+    <link rel="stylesheet" href="../../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../../assets/css/base.css" />
+    <link rel="stylesheet" href="../../assets/css/components.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="../../assets/js/game-settings.js" defer></script>
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <main class="container game">
+      <div class="game__bar">
+        <a class="btn btn--ghost" href="../../">← All games</a>
+        <div data-game-settings></div>
+      </div>
+
+      <header class="game__header">
+        <p class="label">// Logic</p>
+        <h1>Star Battle</h1>
+        <p class="game__lead">
+          Place stars so every row, every column and every outlined region holds exactly the same number of stars. Stars may never touch, not even at a corner.
+        </p>
+      </header>
+
+      <dl class="hud">
+        <div>
+          <dt class="label">Stars</dt>
+          <dd id="stars">0</dd>
+        </div>
+        <div>
+          <dt class="label">Time</dt>
+          <dd id="time">0:00</dd>
+        </div>
+        <div>
+          <dt class="label">Best</dt>
+          <dd id="best">—</dd>
+        </div>
+      </dl>
+
+      <section class="game__stage card" id="stage">
+        <p class="status" id="status" role="status">Press Start to build a board.</p>
+        <div class="summary" id="summary" hidden>
+          <h2>Sky solved</h2>
+          <p id="summary-text"></p>
+          <button class="btn btn--primary" type="button" id="again-btn">Play again</button>
+        </div>
+        <div class="sky" id="board" role="group" aria-label="Star Battle board" hidden></div>
+        <div class="game__actions">
+          <button class="btn btn--primary" type="button" id="start-btn">Start</button>
+          <button class="btn btn--ghost" type="button" id="clear-btn" hidden>Clear</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

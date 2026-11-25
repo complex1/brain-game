@@ -1,0 +1,198 @@
+.game__header {
+  margin-block: var(--space-6) var(--space-5);
+}
+
+.game__header h1 {
+  font-size: var(--text-2xl);
+  margin-top: var(--space-2);
+}
+
+.game__lead {
+  max-width: 62ch;
+  margin-top: var(--space-3);
+  color: var(--color-text-muted);
+}
+
+.hud {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.hud div {
+  min-width: 0;
+  text-align: center;
+}
+
+.hud dd {
+  margin-top: var(--space-1);
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  font-variant-numeric: tabular-nums;
+}
+
+.game__stage {
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.status {
+  min-height: 1.5em;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.04em;
+  color: var(--color-accent);
+}
+
+.status.is-ok { color: var(--color-success); }
+.status.is-bad { color: var(--color-danger); }
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.summary h2 { font-size: var(--text-xl); }
+
+.summary p {
+  max-width: 42ch;
+  color: var(--color-text-muted);
+}
+
+/* Board */
+
+.board {
+  --felt: color-mix(in srgb, var(--color-success) 16%, var(--color-surface));
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+  gap: 1px;
+  width: min(100%, 34rem);
+  aspect-ratio: 1;
+  container-type: inline-size;
+  padding: 1px;
+  background: var(--color-border-strong);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  touch-action: manipulation;
+}
+
+.board.is-idle { opacity: 0.7; }
+
+.sq {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: var(--felt);
+  color: inherit;
+  cursor: pointer;
+}
+
+.sq.is-last {
+  background: color-mix(in srgb, var(--color-warning) 22%, var(--felt));
+}
+
+.sq:focus-visible {
+  outline: 0;
+  box-shadow: inset 0 0 0 3px var(--color-accent);
+  z-index: 1;
+}
+
+.sq.is-target::after {
+  content: "";
+  position: absolute;
+  width: 26%;
+  height: 26%;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-accent) 70%, transparent);
+  pointer-events: none;
+}
+
+.disc {
+  --disc: var(--color-text);
+  --other: var(--color-bg);
+  width: 78%;
+  height: 78%;
+  border-radius: 50%;
+  border: 1px solid var(--edge, var(--color-border));
+  background: var(--disc);
+  box-shadow: var(--shadow-sm);
+  pointer-events: none;
+}
+
+.disc--b {
+  --disc: var(--color-bg);
+  --other: var(--color-text);
+  --edge: var(--color-border-strong);
+}
+
+.disc--w {
+  --disc: var(--color-text);
+  --other: var(--color-bg);
+  --edge: var(--color-text-muted);
+}
+
+.disc.is-flipping { animation: disc-flip 340ms var(--ease-out); }
+.disc.is-placed { animation: disc-place 200ms var(--ease-out); }
+
+@keyframes disc-flip {
+  0% { transform: scaleX(1); background: var(--other); }
+  49% { transform: scaleX(0.06); background: var(--other); }
+  51% { transform: scaleX(0.06); background: var(--disc); }
+  100% { transform: scaleX(1); background: var(--disc); }
+}
+
+@keyframes disc-place {
+  from { transform: scale(0.4); opacity: 0.3; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .disc.is-flipping,
+  .disc.is-placed { animation: none; }
+}
+
+.coord {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  line-height: 1;
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.coord--rank { top: 3px; left: 4px; }
+.coord--file { bottom: 3px; right: 4px; }
+
+.game__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  min-height: 2.5rem;
+}
+
+@media (max-width: 560px) {
+  .game__stage { padding: var(--space-3); }
+  .hud { gap: var(--space-2); padding: var(--space-3); }
+  .hud dd { font-size: var(--text-lg); }
+  .coord { font-size: 0.55rem; }
+}

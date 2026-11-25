@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sokoban — Mental Game</title>
+    <meta name="description" content="Push every box onto a target. Boxes cannot be pulled, so plan each push." />
+    <meta name="theme-color" content="#0a0c11" />
+    <link rel="stylesheet" href="../../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../../assets/css/base.css" />
+    <link rel="stylesheet" href="../../assets/css/components.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="../../assets/js/game-settings.js" defer></script>
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <main class="container game">
+      <div class="game__bar">
+        <a class="btn btn--ghost" href="../../">← All games</a>
+        <div data-game-settings></div>
+      </div>
+      <header class="game__header">
+        <p class="label">// Spatial</p>
+        <h1>Sokoban</h1>
+        <p class="game__lead">
+          Walk around the room and push every box onto a ring. You can push one box at a time, and boxes cannot be pulled, so a box shoved into a corner stays there.
+        </p>
+      </header>
+      <dl class="hud">
+        <div><dt class="label">Level</dt><dd id="level">1</dd></div>
+        <div><dt class="label">Moves</dt><dd id="moves">0</dd></div>
+        <div><dt class="label">Pushes</dt><dd id="pushes">0</dd></div>
+        <div><dt class="label">Best</dt><dd id="best">—</dd></div>
+      </dl>
+      <section class="game__stage card">
+        <p class="status" id="status" role="status">Push every box onto a ring.</p>
+        <div class="summary" id="summary" hidden>
+          <h2>Level solved</h2>
+          <p id="summary-text"></p>
+          <div class="summary__actions">
+            <button class="btn btn--primary" type="button" id="next-btn">Next level</button>
+            <button class="btn btn--ghost" type="button" id="again-btn">Play again</button>
+          </div>
+        </div>
+        <div class="room" id="room" tabindex="0" role="application" aria-roledescription="Sokoban board" aria-label="Board"></div>
+        <div class="pad" id="pad" role="group" aria-label="Move">
+          <button class="pad__btn pad__btn--up" type="button" data-dir="up" aria-label="Move up">↑</button>
+          <button class="pad__btn pad__btn--left" type="button" data-dir="left" aria-label="Move left">←</button>
+          <button class="pad__btn pad__btn--right" type="button" data-dir="right" aria-label="Move right">→</button>
+          <button class="pad__btn pad__btn--down" type="button" data-dir="down" aria-label="Move down">↓</button>
+        </div>
+        <div class="game__actions">
+          <button class="btn btn--ghost" type="button" id="undo-btn" disabled>Undo</button>
+          <button class="btn btn--ghost" type="button" id="reset-btn">Reset level</button>
+        </div>
+        <p class="hint label">Arrow keys or W A S D to move · U or Backspace to undo</p>
+      </section>
+    </main>
+  </body>
+</html>
